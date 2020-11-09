@@ -50,14 +50,13 @@ link_directories(
 # Add all the files needed to compile here
 add_executable(${PROJECT_NAME}
   src/main.cpp
+  src/debugScreen.c
 )
 
 # Library to link to (drop the -l prefix). This will mostly be stubs.
 target_link_libraries(${PROJECT_NAME}
-  SceLibKernel_stub # this line is only for demonstration. It's not needed as
-                    # the most common stubs are automatically included.
-  stdc++
-  pthread
+  SceLibKernel_stub
+  SceDisplay_stub
 )
 
 ## Create Vita files

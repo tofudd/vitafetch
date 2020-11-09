@@ -1,21 +1,25 @@
+#include <psp2/kernel/threadmgr.h>
 #include <psp2/kernel/processmgr.h>
-#include <sstream>
-#include <vector>
+#include <stdio.h>
 
-#include <cstdio>
+#include "debugScreen.h"
+
+
+#define printf psvDebugScreenPrintf
 
 int main(int argc, char *argv[]) {
-	std::stringstream output;
-	std::vector<std::string> hello = { "Hello" };
-	hello.push_back(",");
-	hello.push_back(" C++ ");
-	hello.push_back("world!");
-	for (auto &s : hello) {
-		// std::cout does't work ATM :(
-		output << s;
-	}
-	output << std::endl;
-	printf("%s\n", output.str().c_str());
+	PsvDebugScreenFont *psvDebugScreenFont_default_1x;
+	PsvDebugScreenFont *psvDebugScreenFont_default_2x;
+	PsvDebugScreenFont *psvDebugScreenFont_previous;
+	PsvDebugScreenFont *psvDebugScreenFont_current;
+
+	psvDebugScreenInit();
+	psvDebugScreenFont_previous = psvDebugScreenFont_default_1x = psvDebugScreenGetFont();
+	psvDebugScreenFont_default_2x = psvDebugScreenScaleFont2x(psvDebugScreenFont_default_1x);
+	psvDebugScreenFont_current = psvDebugScreenSetFont(psvDebugScreenFont_default_2x);
+
+	printf("VitaFetch");
+	sceKernelDelayThread(3*1000000);
 	sceKernelExitProcess(0);
-    return 0;
+	return 0;
 }
