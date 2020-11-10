@@ -57,6 +57,8 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   SceLibKernel_stub
   SceDisplay_stub
+  ScePower_stub
+  SceSysmem_stub
 )
 
 ## Create Vita files
