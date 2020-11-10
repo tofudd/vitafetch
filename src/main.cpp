@@ -19,7 +19,10 @@ int main(int argc, char *argv[]) {
 	int batteryTemp;
 	int batteryCycles;
 	int batteryHealth;
-		
+	
+	int cpuFrequency;
+	int gpuFrequency;
+	
 	// Debug screen init
 	psvDebugScreenInit();
 	psvDebugScreenFont_previous = psvDebugScreenFont_default_1x = psvDebugScreenGetFont();
@@ -32,11 +35,17 @@ int main(int argc, char *argv[]) {
 	batteryCycles = scePowerGetBatteryCycleCount();
 	batteryHealth = scePowerGetBatterySOH();
 	
+	// Fetching frequency info
+	cpuFrequency = scePowerGetArmClockFrequency();
+	gpuFrequency = scePowerGetGpuClockFrequency();
+	
 	printf("Battery level:\t %d%% \n", batteryPercentage);
 	printf("Battery temp:\t %dC \n", batteryTemp / 100);
 	printf("Battery cycles:\t %d \n", batteryCycles);
 	printf("Battery health:\t %d%% \n", batteryHealth);
-	
+	printf("\n");
+	printf("CPU frequency:\t %dMHz \n", cpuFrequency);
+	printf("GPU frequency:\t %dMHz \n", gpuFrequency);
 
 
 	
