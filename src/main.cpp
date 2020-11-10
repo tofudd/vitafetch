@@ -39,13 +39,13 @@ int main(int argc, char *argv[]) {
 	cpuFrequency = scePowerGetArmClockFrequency();
 	gpuFrequency = scePowerGetGpuClockFrequency();
 	
-	printf("Battery level:\t %d%% \n", batteryPercentage);
-	printf("Battery temp:\t %dC \n", batteryTemp / 100);
-	printf("Battery cycles:\t %d \n", batteryCycles);
-	printf("Battery health:\t %d%% \n", batteryHealth);
+	printf("\e[31m Battery level:\e[39;49m  %d%% \n", batteryPercentage);
+	printf("\e[31m Battery temp:\e[39;49m   %dC \n", batteryTemp / 100);
+	printf("\e[31m Battery cycles:\e[39;49m %d \n", batteryCycles);
+	printf("\e[31m Battery health:\e[39;49m %d%% \n", batteryHealth);
 	printf("\n");
-	printf("CPU frequency:\t %dMHz \n", cpuFrequency);
-	printf("GPU frequency:\t %dMHz \n", gpuFrequency);
+	printf("\e[31m CPU frequency:\e[39;49m  %dMHz \n", cpuFrequency);
+	printf("\e[31m GPU frequency:\e[39;49m  %dMHz \n", gpuFrequency);
 
 
 	
